@@ -4,7 +4,7 @@ const cookieName = {
 }
 
 const HOSTS = () => {
-  return 'https://smallstrong.site/api'
+  return 'http://132.232.87.186/api'
 }
 
 const API_HOST = HOSTS()

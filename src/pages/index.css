@@ -17,6 +17,8 @@
 }
 
 .list{
+  align-items: center;
+  align-content: center;
   width: 280px;
   margin-top: 20px;
 }
