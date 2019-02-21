@@ -1,41 +1,104 @@
 
-.login {
+.home {
   display: flex;
   position:relative;
   flex-direction: column;
-  background :rgba(240, 243, 247,1);
+  background :rgb(255, 255, 255);
   width: 100%;
   height: 100%;
+  overflow:scroll;
+}
+.bg{
+  display: flex;
+  position:relative;
+  flex-direction: column;
   align-items: center;
-}
-
-.search{
-  width: 280px;
-  height: 30px;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.list{
-  align-items: center;
-  align-content: center;
-  width: 280px;
-  margin-top: 20px;
-}
-
-.item{
-  width: 280px;
-  height: 30px;
-}
-
-.footer {
-  position: absolute;
-  bottom: 24px;
   width: 100%;
-  text-align: center;
-  height: 20px;
+  height: 500px;
+}
+
+.bg_img{
+  position:absolute;
+  width: 100%;
+  height: 500px;
+}
+
+.slogan{
+  position:absolute;
+  top: 153px;
+  width: 220px;
+  height: 65px;
+  color: rgba(255, 255, 255, 1);
+  font-size: 44px;
+  text-align: left;
+  font-family: SourceHanSansSC-regular;
+}
+
+.input{
+  position:absolute;
+  top: 274px;
+  width: 445px;
+  height: 44px;
   line-height: 20px;
-  color: rgba(0, 0, 0, 0.45);
-  font-size: 12px;
-  font-family: PingFangSC-Regular;
+}
+
+.sep{
+  width: 100%;
+  display: flex;
+  position:relative;
+  flex-direction: row;
+  margin-top: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.line{
+  width: 48px;
+  background: #BBBBBB;
+  height: 1px;
+}
+
+.txt{
+  margin-left: 23px;
+  margin-right: 23px;
+  width: 104px;
+  height: 38px;
+  color: rgba(142, 142, 142, 1);
+  font-size: 26px;
+  text-align: left;
+  font-family: SourceHanSansSC-regular;
+}
+
+.book_item{
+  display: flex;
+  position:relative;
+  flex-direction: column;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  width: 240px;
+  height: 320px;
+  align-items: flex-start;
+}
+.book_img{
+  width: 240px;
+  height: 220px;
+  margin-bottom: 10px;
+}
+
+.info{
+  /* margin-left: 10px; */
+  color: rgba(16, 16, 16, 1);
+  font-size: 10px;
+  text-align: left;
+  font-family: SourceHanSansSC-regular;
+}
+
+.TabPane{
+  display: flex;
+  position:relative;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
 }

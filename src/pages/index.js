@@ -1,62 +1,117 @@
 import React, { Component } from 'react'
 import styles from './index.css'
-import { message, Input, Icon, List, Tabs } from 'antd'
+import { message, Input, Icon, List, Tabs,Card } from 'antd'
 import { list } from '../service/home'
-import router from 'umi/router';
 import { fSetCookieMes } from '../utils/common'
+import router from 'umi/router';
 const Search = Input.Search;
 const TabPane = Tabs.TabPane;
+const { Meta } = Card;
 
 
-export default class Login extends React.Component {
+export default class Home extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            key: '',
-            data_list: []
-        }
-    }
-
-
-    search() {
-        if (!this.state.key) {
-            return
-        }
-        var body = {
-            key: this.state.key,
-        }
-        console.log(body)
-
-        list(body).then(res => {
-            if (res.success) {
-                console.log(res)
-                this.setState(
+            search_info: '',
+            tab_list: [
+                {tab:"前端",data_list:[
                     {
-                        data_list: res['data']['result_list']
+                        book_name:"程序员的自我修养",
+                        author:"smallstrong",
+                        password:"wwxp"
+                    },
+                    {
+                        book_name:"程序员的自我修养",
+                        author:"smallstrong",
+                        password:"wwxp"
+                    },
+                    {
+                        book_name:"程序员的自我修养",
+                        author:"smallstrong",
+                        password:"wwxp"
+                    },
+                    {
+                        book_name:"程序员的自我修养",
+                        author:"smallstrong",
+                        password:"wwxp"
+                    },
+                    {
+                        book_name:"程序员的自我修养",
+                        author:"smallstrong",
+                        password:"wwxp"
+                    },
+                    {
+                        book_name:"程序员的自我修养",
+                        author:"smallstrong",
+                        password:"wwxp"
+                    },
+                    {
+                        book_name:"程序员的自我修养",
+                        author:"smallstrong",
+                        password:"wwxp"
+                    },
+                    {
+                        book_name:"程序员的自我修养",
+                        author:"smallstrong",
+                        password:"wwxp"
+                    },
+                    {
+                        book_name:"程序员的自我修养",
+                        author:"smallstrong",
+                        password:"wwxp"
+                    },
+                    {
+                        book_name:"程序员的自我修养",
+                        author:"smallstrong",
+                        password:"wwxp"
+                    },
+                    {
+                        book_name:"程序员的自我修养",
+                        author:"smallstrong",
+                        password:"wwxp"
+                    },
+                    
+                ]},
+                {tab:"后端",data_list:[
+                    {
+                        book_name:"程序员的自我修养",
+                        author:"smallstrong",
+                        password:"wwxp"
                     }
-                )
-            } else {
-                message.error('我擦，出错了', 1);
-            }
-        })
-
+                ]},
+                {tab:"移动端",data_list:[
+                    {
+                        book_name:"程序员的自我修养",
+                        author:"smallstrong",
+                        password:"wwxp"
+                    }
+                ]},
+                {tab:"算法",data_list:[
+                    {
+                        book_name:"程序员的自我修养",
+                        author:"smallstrong",
+                        password:"wwxp"
+                    }
+                ]},
+                {tab:"大数据",data_list:[{
+                    book_name:"程序员的自我修养",
+                    author:"smallstrong",
+                    password:"wwxp"
+                }]}
+            ],
+            activeKey:"前端",
+        }
     }
 
-
-    onChangeSearchInfo = (e) => {
-        this.setState({ key: e }, () => {
-            this.search();
-        });
+    search = (e) =>{
+        console.log(e)
+        fSetCookieMes('search_info',e)
+        router.push('/main/search');
     }
-
-    callback(key) {
-        console.log(key);
-    }
-
-
 
     render() {
-        const { key } = this.state;
+        const { activeKey } = this.state;
         var screen_width = document.documentElement.clientWidth || document.body.clientWidth;
         var screen_height = document.documentElement.clientHeight || document.body.clientHeight;
         window.onresize = function () {
@@ -64,43 +119,53 @@ export default class Login extends React.Component {
             screen_height = document.documentElement.clientHeight || document.body.clientHeight;
         }
         return (
-            
-                    <div  className={styles.login} style={{ width: screen_width, height: screen_height - 64 }} >
+                <div  className={styles.home} style={{ width: screen_width}} >
+                    <div className={styles.bg}>
+                        <img className={styles.bg_img} src={require('../assets/bg.png')} alt='' />
+                        <span className={styles.slogan}>偷书不算偷</span>
                         <Search
-                            className={styles.search}
-                            placeholder="输入搜索关键字"
-                            onSearch={this.onChangeSearchInfo}
-                        />
-
-                        <List
-                            itemLayout="vertical"
-                            className={styles.list}
-                            size="large"
-                            pagination={{
-                                onChange: (page) => {
-                                    console.log(page);
-                                },
-                                pageSize: 7,
-                            }}
-                            dataSource={this.state.data_list}
-
-                            renderItem={item => (
-                                <List.Item>
-                                    <div className={styles.item}>
-                                        <a href={item['url']}>{item['name']}</a>
-                                    </div>
-
-                                </List.Item>
-                            )}
-                        />
-
-                        <div className={styles.footer}>
-                            pdf share for free
+                            placeholder="输入您要查找的书名"
+                            onSearch={this.search}
+                            className={styles.input}
+                            />
                     </div>
+                    <div className={styles.sep}>
+                            <div className={styles.line}/>
+                            <span className={styles.txt}>我的推荐</span>
+                            <div className={styles.line}/>
                     </div>
 
-               
-
+                    <Tabs defaultActiveKey="1" onChange={this.callback} defaultActiveKey={activeKey}>
+                        {
+                            this.state.tab_list.map((item,i) => (
+                                <TabPane tab={item.tab} key={item.tab} className={styles.TabPane}>
+                                    {item.data_list.map((d_item,j) => (
+                                            // <div className={styles.book_item}>
+                                            //     <img className={styles.book_img} src={require('../assets/bg.png')} alt='' />
+                                            //     <span className={styles.info}>书名：{d_item.book_name}</span>
+                                            //     <span className={styles.info}>作者：{d_item.author}</span>
+                                            //     <span className={styles.info}>密码：{d_item.password}</span>
+                                            // </div>
+                                            <Card
+                                                hoverable
+                                                className={styles.book_item}
+                                                cover={<img className={styles.book_img} src={require('../assets/bg.png')} alt='' />}
+                                            >
+                                            <Meta className={styles.info}
+                                                title= {"书名："+ d_item.book_name}
+                                                description={"密码："+ d_item.password}
+                                            />
+                                            </Card>
+                                        )
+                                    )
+                                    }
+                                </TabPane>
+                            ))
+                  
+                        }  
+                    </Tabs>
+                        
+                </div>
         )
     }
 }

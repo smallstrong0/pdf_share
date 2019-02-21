@@ -27,7 +27,7 @@ export default {
     ie: 7,
   },
   "theme": {
-    // "primary-color": "#2348E6",
+    "primary-color": "#1989FA",
     // "primary-color": "linear-gradient(270deg, #4285F4 0%, #2348E6 100%)",
     // "table-header-bg": "#EEEFF9",
     // "menu-bg":"#2348E6",

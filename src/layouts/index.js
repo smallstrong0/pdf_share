@@ -5,7 +5,7 @@ function BasicLayout(props) {
   console.log(props.location.pathname)
   return (
     <div className={styles.normal}>
-      <Header></Header>
+      {/* <Header></Header> */}
       {props.children}
     </div>
   );
