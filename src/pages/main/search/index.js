@@ -93,7 +93,7 @@ export default class SearchPage extends React.Component {
                             <Card onClick={this.onClick.bind(this,d_item)}
                                 hoverable
                                 className={styles.book_item}
-                                cover={<img className={styles.book_img} src={require('../../../assets/bg.png')} alt='' />}
+                                cover={<img className={styles.book_img} src={require('../../../assets/placehold.png')} alt='' />}
                             >
                                 <Meta className={styles.info}
                                     title={<div className={styles.title} ><span className={styles.a} title={d_item.book_name}>{d_item.book_name}</span></div>}

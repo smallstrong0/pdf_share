@@ -102,3 +102,12 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.title{
+  width: 190px;
+  text-overflow:ellipsis;
+}
+
+.a{
+  color: rgba(16, 16, 16, 1);
+}

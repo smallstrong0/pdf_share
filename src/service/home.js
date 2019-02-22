@@ -13,3 +13,15 @@ export async function list(params) {
     })
 }
 
+/**
+ * recommend
+ */
+export async function recommend(params) {
+    return request({
+        url: `${API_PATH}/recommend/info`,
+        method: 'get',
+        sig: true,
+        params,
+    })
+}
+
